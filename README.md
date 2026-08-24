@@ -15,7 +15,7 @@ Open `MachineCodingStarter.xcodeproj` and run **MachineCodingStarter**.
 | --- | --- | --- |
 | API | `APIClient` | `URLSessionAPIClient` (Data only) |
 | Decoding | `DataDecoding` | `JSONDataDecoder` + `ProductDTO.toDomain()` |
-| Cache | `Caching` | `MemoryCache` |
+| Cache | `Caching` | `MemoryCache`, `UserDefaultsCache` |
 | Repo | `ProductRepository` | `DefaultProductRepository` |
 | DI | — | `AppContainer` |
 

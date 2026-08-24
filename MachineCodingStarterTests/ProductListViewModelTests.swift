@@ -96,4 +96,17 @@ final class ProductRepositoryTests: XCTestCase {
         _ = try await repo.fetchProducts(skip: 0, query: nil, fresh: true)
         XCTAssertEqual(api.calls, 2)
     }
+
+    func testUserDefaultsCachePersists() async {
+        let suite = "UserDefaultsCacheTests"
+        let defaults = UserDefaults(suiteName: suite)!
+        defaults.removePersistentDomain(forName: suite)
+        let page = ProductPage(
+            products: [Product(id: 1, title: "Phone", description: "", price: 1, thumbnail: nil)],
+            total: 1
+        )
+        await UserDefaultsCache(defaults: defaults).set(page, for: "p")
+        let loaded: ProductPage? = await UserDefaultsCache(defaults: defaults).get("p")
+        XCTAssertEqual(loaded?.products.first?.title, "Phone")
+    }
 }

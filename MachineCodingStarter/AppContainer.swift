@@ -9,7 +9,7 @@ final class AppContainer {
     init(
         apiClient: APIClient = URLSessionAPIClient(),
         decoder: DataDecoding = JSONDataDecoder(),
-        cache: Caching = MemoryCache()
+        cache: Caching = UserDefaultsCache()
     ) {
         self.apiClient = apiClient
         self.decoder = decoder
